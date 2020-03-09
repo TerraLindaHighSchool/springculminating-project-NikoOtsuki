@@ -34,5 +34,11 @@ public class Obstacle : MonoBehaviour
         }
     }
 
-
+    private void Update()
+    {
+        if(transform.position.y < downwardBound)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
