@@ -6,9 +6,9 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject[] obstaclesPrefabs;
     private float spawnRangeX = -10;
-    private float spawnPosZ = 10;
+    private float spawnPosZ = 9;
     private float startDelay = 0.5f;
-    private float spawnInterval = 0.5f;
+    private float spawnInterval = 1.0f;
     Transform[] spawnpoints;
 
     // Start is called before the first frame update

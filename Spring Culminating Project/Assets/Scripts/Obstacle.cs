@@ -29,7 +29,11 @@ public class Obstacle : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            Destroy(gameObject);
+        }
 
+        if(collision.gameObject.CompareTag("Barrier"))
+        {
             Destroy(gameObject);
         }
     }
