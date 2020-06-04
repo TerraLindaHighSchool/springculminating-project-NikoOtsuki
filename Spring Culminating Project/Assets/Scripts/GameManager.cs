@@ -49,13 +49,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void StartLevel()
+    public void StartLevel(float difficulty)
     {
         //spawnInterval /= difficulty;
         isGameActive = true;
         titleScreen.gameObject.SetActive(false);
-        //timerText.text = "Time Left: " + targetTime;
-        //targetTime -= Time.deltaTime;
+        timerText.text = "Time Left: " + targetTime;
+        targetTime -= Time.deltaTime;
     }
 
     public void WinLevel()
