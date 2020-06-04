@@ -8,12 +8,14 @@ public class SpawnManager : MonoBehaviour
     private float spawnRangeX = -10;
     private float spawnPosZ = 9;
     private float startDelay = 0.5f;
-    private float spawnInterval = 1.0f;
+    public float spawnInterval = 2.0f;
     Transform[] spawnpoints;
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         InvokeRepeating("SpawnRandomObstacle", startDelay, spawnInterval);
     }
 
@@ -25,8 +27,11 @@ public class SpawnManager : MonoBehaviour
     }
     void SpawnRandomObstacle()
     {
-        Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ);
-        int obstacleIndex = Random.Range(0, obstaclesPrefabs.Length);
-        Instantiate(obstaclesPrefabs[obstacleIndex], spawnPos, obstaclesPrefabs[obstacleIndex].transform.rotation);
+        while (gameManager.isGameActive)
+        {
+            Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ);
+            int obstacleIndex = Random.Range(0, obstaclesPrefabs.Length);
+            Instantiate(obstaclesPrefabs[obstacleIndex], spawnPos, obstaclesPrefabs[obstacleIndex].transform.rotation);
+        }
     }
 }

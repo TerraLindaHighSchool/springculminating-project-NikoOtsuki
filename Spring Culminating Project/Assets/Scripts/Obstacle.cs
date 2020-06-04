@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    private float downwardBound = -8;
     public Rigidbody obstacleRb;
     public float jumpForce;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -31,18 +32,10 @@ public class Obstacle : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        if(collision.gameObject.CompareTag("Barrier"))
-        {
-            Destroy(gameObject);
-        }
     }
 
     private void Update()
     {
-        if(transform.position.y < downwardBound)
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject, 10);
     }
 }
