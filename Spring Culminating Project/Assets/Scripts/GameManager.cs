@@ -13,15 +13,14 @@ public class GameManager : MonoBehaviour
     public bool isGameActive;
     public Button restartButton;
     public GameObject titleScreen;
-    private float difficulty;
     public TextMeshProUGUI winText;
     public Button mainMenuButton;
 
     public GameObject[] obstaclesPrefabs;
-    private float spawnRangeX = -10;
+    private float spawnRangeX = -7;
     private float spawnPosZ = 9;
     private float startDelay = 0.5f;
-    public float spawnInterval = 2.0f;
+    private float spawnInterval;
     Transform[] spawnpoints;
 
     // Start is called before the first frame update
@@ -29,12 +28,17 @@ public class GameManager : MonoBehaviour
     {
         InvokeRepeating("SpawnRandomObstacle", startDelay, spawnInterval);
         titleScreen.gameObject.SetActive(true);
+        isGameActive = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        while (isGameActive)
+        {
+            targetTime -= Time.deltaTime;
+            timerText.text = "Time Left: " + targetTime;
+        }
     }
 
     public void GameOver()
@@ -51,11 +55,11 @@ public class GameManager : MonoBehaviour
 
     public void StartLevel(float difficulty)
     {
-        //spawnInterval /= difficulty;
         isGameActive = true;
+        spawnInterval = spawnInterval / difficulty;
         titleScreen.gameObject.SetActive(false);
         timerText.text = "Time Left: " + targetTime;
-        targetTime -= Time.deltaTime;
+        timerText.gameObject.SetActive(true);
     }
 
     public void WinLevel()
@@ -66,11 +70,6 @@ public class GameManager : MonoBehaviour
             winText.gameObject.SetActive(true);
             mainMenuButton.gameObject.SetActive(true);
         }
-    }
-
-    public void MainMenu()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void SpawnRandomObstacle()

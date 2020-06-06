@@ -1622,7 +1622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ea03b4bf14f924992d2ddd53355037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 3
+  difficulty: 0
 --- !u!114 &871876760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2839,7 +2839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ea03b4bf14f924992d2ddd53355037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 1
+  difficulty: 0
 --- !u!114 &1346549188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4811,7 +4811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ea03b4bf14f924992d2ddd53355037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 2
+  difficulty: 0
 --- !u!114 &1985945744
 MonoBehaviour:
   m_ObjectHideFlags: 0
